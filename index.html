@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>MiniSRC Assembler and MIF Generator by mitchellwaite</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/mitchellwaite/MiniSRC-Assembler">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/mitchellwaite/MiniSRC-Assembler/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/mitchellwaite/MiniSRC-Assembler/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>MiniSRC Assembler and MIF Generator</h1>
+          <p>&quot;Because I was too lazy to assemble the ROM by hand&quot;</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/mitchellwaite">mitchellwaite</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="elec374-minisrc-assembler--mif-generator" class="anchor" href="#elec374-minisrc-assembler--mif-generator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ELEC374 MiniSRC Assembler / MIF Generator</h1>
+
+<p>A simple assembler program for the mini SRC computer system specified for the <a href="http://my.ece.queensu.ca/Current-Students/Undergraduate/Course-Summaries/ELEC-374.html">ELEC 374 course at Queen's University</a>. It does not have support for any custom instructions, however if you clone this repository you can add them to the InstructionParser.cs pretty easily. It supports windows natively, but will probably run on any *nix systems (Mac, Linux, etc.) with the mono framework</p>
+
+<p><img src="https://raw.githubusercontent.com/mitchellwaite/MiniSRC-Assembler/master/Screenshot.png" alt='"Screenshot of the program"'></p>
+
+<h1>
+<a id="downloads" class="anchor" href="#downloads" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Downloads</h1>
+
+<ul>
+<li><a href="https://github.com/mitchellwaite/MiniSRC-Assembler/raw/master/MiniSRC_ASM/MiniSRC_ASM_CMD/bin/Debug/minisrc_asm.exe">Download the minisrc assembler here</a></li>
+<li><a href="https://github.com/mitchellwaite/MiniSRC-Assembler/raw/master/CPU_Spec.pdf">Download the MiniSRC ISA spec here</a></li>
+</ul>
+
+<h1>
+<a id="how-to-run" class="anchor" href="#how-to-run" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to run</h1>
+
+<p>Windows: minisrc_asm.exe [file] [output] [size] [options]</p>
+
+<p>Mac/Linux <em>(you must install the mono framework)</em>: mono minisrc_asm.exe [file] [output] [options]</p>
+
+<p>[file] is the path to your input .asm/.s file, containing MiniSRC Assembly Code</p>
+
+<p>[output] is the desired path to the output file, which is an Altera format MIF. You can convert it to Intel HEX format in Quartus, if desired</p>
+
+<p>[size] is the desired size in (32 bit) words of memory.</p>
+
+<p>[options] are the requested <em>case sensitive</em> display options, which include:</p>
+
+<p>-showfile shows the output MIF in the console window</p>
+
+<p>-noinfo hides any informational messages</p>
+
+<p>-nowarn hides any warning messages</p>
+
+<p>If any warnings occur, the program may <em>still</em> attempt to generate a MIF. The program will probably not crash, but do be aware that <em>your MIF file may be bad</em>.</p>
+
+<h1>
+<a id="assembly-syntax-improvements" class="anchor" href="#assembly-syntax-improvements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Assembly Syntax Improvements</h1>
+
+<p>-Specifying a subroutine is done on its own line, using an @ symbol. <em>Never place this directly before an ORG directive.</em> Currently subroutines can't be called directly, but this doesn't matter since the instruction set doesn't support it. If you want to extend the instruction set in that way, a table is created in FileParser in which you can use to make a second pass over the assembly file.</p>
+
+<p>-To specify a hexadecimal constant, you can use '0x' or '$' interchangably</p>
+
+<p>-To specify a data constant in memory, you can use an '&amp;' symbol, followed by hexadecimal or decimal constants (Max 32 bit!). For clarity, it's recommended to do this <em>directly after</em> an ORG directive, but it isn't required.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
