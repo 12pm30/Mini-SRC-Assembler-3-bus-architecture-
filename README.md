@@ -1,4 +1,4 @@
-# ELEC374 MiniSRC Assembler / MIF Generator
+# MiniSRC Assembler / MIF Generator
 
 A simple assembler program for the mini SRC computer system. It does not have support for any custom instructions, however if you clone this repository you can add them to the InstructionParser.cs pretty easily. It supports windows natively, but will probably run on any *nix systems (Mac, Linux, etc.) with the mono framework
 
